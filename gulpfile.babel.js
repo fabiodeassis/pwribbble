@@ -34,9 +34,17 @@ import swPrecache from 'sw-precache';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import {output as pagespeed} from 'psi';
 import pkg from './package.json';
+import karma from 'karma';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+
+var localConfig;
+try {
+  localConfig = require('./local.config.json');
+} catch (e) {
+  localConfig = {};
+}
 
 // Lint JavaScript
 gulp.task('lint', () =>
@@ -68,6 +76,17 @@ gulp.task('copy', () =>
   }).pipe(gulp.dest('dist'))
     .pipe($.size({title: 'copy'}))
 );
+
+gulp.task("test", (done) => {
+
+  new karma.Server({
+    configFile: __dirname + '/karma.conf.js',
+    autoWatch: localConfig.test && localConfig.test.autoWatch || false,
+    browsers: [localConfig.test && localConfig.test.browser || 'PhantomJS'],
+    singleRun: localConfig.test ? localConfig.test.singleRun : true
+
+  }, done).start();
+});
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
@@ -115,7 +134,7 @@ gulp.task('scripts', () =>
     './app/scripts/main.js',
     // App
     './app/scripts/app.js',
-    './app/scripts/controller/**/*.js',
+    './app/scripts/controllers/**/*.js',
     './app/scripts/services/**/*.js',
   ])
     .pipe($.newer('.tmp/scripts'))
@@ -201,7 +220,8 @@ gulp.task('serve:dist', ['default'], () =>
     //       will present a certificate warning in the browser.
     // https: true,
     server: 'dist',
-    port: 3001
+    port: 3001,
+    middleware: [proxy]
   })
 );
 
