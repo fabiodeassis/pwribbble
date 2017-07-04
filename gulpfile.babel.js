@@ -29,7 +29,7 @@ import gulp from 'gulp';
 import del from 'del';
 import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
-import proxyMiddleware from 'http-proxy-middleware';
+// import proxyMiddleware from 'http-proxy-middleware';
 import swPrecache from 'sw-precache';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import {output as pagespeed} from 'psi';
@@ -180,10 +180,10 @@ gulp.task('html', () => {
 gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // config proxy
-var proxy = proxyMiddleware('/v1', {
-  target: 'https://api.dribbble.com',
-  changeOrigin: true,             // for vhosted sites, changes host header to match to target's host
-});
+// var proxy = proxyMiddleware('/v1', {
+//   target: 'https://api.dribbble.com',
+//   changeOrigin: true,
+// });
 
 // Watch files for changes & reload
 gulp.task('serve', ['scripts', 'styles'], () => {
@@ -199,7 +199,7 @@ gulp.task('serve', ['scripts', 'styles'], () => {
     // https: true,
     server: ['.tmp', 'app'],
     port: 3000,
-    middleware: [proxy]
+    // middleware: [proxy]
   });
 
   gulp.watch(['app/**/*.html'], reload);
@@ -238,7 +238,7 @@ gulp.task('default', ['clean'], cb =>
 // Run PageSpeed Insights
 gulp.task('pagespeed', cb =>
   // Update the below URL to the public URL of your site
-  pagespeed('example.com', {
+  pagespeed('f2p.com.br/bbb', {
     strategy: 'mobile'
     // By default we use the PageSpeed Insights free (no API key) tier.
     // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE

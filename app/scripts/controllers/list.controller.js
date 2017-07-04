@@ -70,7 +70,6 @@
     /**
      * Listeners
      */
-    console.log($scope);
     $scope.$watch(angular.bind(this, function() {
       return this.page;
     }), function(newVal, oldVal) {

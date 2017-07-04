@@ -11,8 +11,7 @@
    * @return {DribbbleApiServices} Objeto com os metodos da api
    */
   function DribbbleApiServices($http, MessageServices) {
-    const dribbbleApiVersion = 'v1';
-    const dribbbleApiUrl = '/' + dribbbleApiVersion;
+    const dribbbleApiUrl = 'https://api.dribbble.com/v1';
 
     /**
      * Fns para manipulação de Shots
