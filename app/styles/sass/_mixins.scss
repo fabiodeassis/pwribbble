@@ -1,0 +1,36 @@
+@mixin border-radius($radius: .5rem) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+@mixin flex-container ($align:center) {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: $align;
+  align-items: $align;
+}
+
+
+@mixin hyphenate($break: break-all, $hyphens:auto) {
+	 -ms-word-break: $break;
+	     word-break: $break;
+	     // Non standard for webkit
+	     word-break: break-word;
+
+	-webkit-hyphens: $hyphens;
+	   -moz-hyphens: $hyphens;
+	    -ms-hyphens: $hyphens;
+	        hyphens: $hyphens;
+}

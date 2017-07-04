@@ -1,0 +1,6 @@
+app.yaml
+docs
+dist/
+node_modules
+.idea
+.tmp
