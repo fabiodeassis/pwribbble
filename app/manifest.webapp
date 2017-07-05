@@ -1,25 +1,25 @@
 {
   "version": "1.0.0",
-  "name": "Web Starter Kit",
-  "launch_path": "/index.html",
-  "description": "A front-end template that helps you build fast, modern mobile web apps.",
+  "name": "Pwribbble!",
+  "launch_path": "/pwribbble!/index.html",
+  "description": "Uma amostra usando a Api v1 do Dribbble.",
   "icons": {
     "128": "/images/touch/icon-128x128.png"
   },
   "developer": {
-    "name": "",
-    "url": ""
+    "name": "Fabio de Assis",
+    "url": "https://f2p.com.br"
   },
   "installs_allowed_from": [
     "*"
   ],
-  "default_locale": "en",
+  "default_locale": "pt_BR",
   "permissions": {
   },
   "locales": {
-    "en": {
-      "name": "Web Starter Kit",
-      "description": "A front-end template that helps you build fast, modern mobile web apps."
+    "pt_BR": {
+      "name": "Pwribbble!",
+      "description": "Uma amostra usando a Api v1 do Dribbble."
     }
   }
 }

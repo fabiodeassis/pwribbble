@@ -1,10 +1,14 @@
-<div>
+<div class="media">
+  <h1>{{ItemCtrl.shot.title}}</h1>
   <picture>
     <!--<source ng-srcset="{{shot.images.hidpi}}" media="(max-width: 768px)">-->
     <!--<source ng-srcset="{{shot.images.normal}}" media="(min-width: 768px) and (max-width: 480px)">-->
     <source ng-srcset="{{ItemCtrl.shot.images.normal}}" media="(min-width: 480px)">
     <img ng-srcset="{{ItemCtrl.shot.images.teaser}}" alt="{{ItemCtrl.shot.title}}">
-  </picture><br>
+  </picture>
+  <p ng-bind-html="ItemCtrl.shot.description"></p>
+  <br>
+  <br>
   Criado: {{ItemCtrl.shot.created_at | date:'short'}}<br>
   Atualizado: {{ItemCtrl.shot.updated_at | date:'short'}}<br>
   Views: {{ItemCtrl.shot.views_count}}<br>
@@ -12,13 +16,13 @@
   Comments: {{ItemCtrl.shot.comments_count}}<br>
 </div>
 
-<div>
+<div class="user">
   <picture>
     <img ng-srcset="{{ItemCtrl.shot.user.avatar_url}}" alt="{{ItemCtrl.shot.user.name}}">
   </picture><br>
-  Nome: {{ItemCtrl.shot.user.name}}<br>
-  Bio: {{ItemCtrl.shot.user.bio}}<br>
-  Location: {{ItemCtrl.shot.user.location}}<br>
+  <h2>{{ItemCtrl.shot.user.name}}</h2>
+  <p ng-bind-html="ItemCtrl.shot.user.bio"></p>
+  <p>{{ItemCtrl.shot.user.location}}</p>
   <dl>
     <dt>Links</dt>
     <dd ng-repeat="link in ItemCtrl.links">{{link.name}}: <a ng-href="{{link.url}}">{{link.url}}</a></dd>

@@ -3,12 +3,21 @@
 
 # TEAM
 
-  <name> -- <role> -- <twitter>
+  I -- Frontend Developer -- @assisfabio
+
+  Me -- Coffee Maker -- @assisfabio
+
+  MySelf -- Cooker -- @assisfabio
 
 # THANKS
-
-  <name>
+  I, Me and MySelf for everything!
 
 # TECHNOLOGY COLOPHON
 
-  HTML5, CSS3
+  HTML5, CSS3, AngularJS
+
+# SITE #
+	Last update: 2017/07/05
+	Language: Portuguese (Brazil)
+	Doctype: HTML5
+	IDE: WebStorm 2016

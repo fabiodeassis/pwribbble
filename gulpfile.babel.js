@@ -129,6 +129,7 @@ gulp.task('scripts', () =>
   gulp.src([
     // Dependencies
     './node_modules/angular/angular.js',
+    './node_modules/angular-sanitize/angular-sanitize.js',
     './node_modules/angular-ui-router/release/angular-ui-router.js',
     // Service Works
     './app/scripts/main.js',
@@ -238,7 +239,7 @@ gulp.task('default', ['clean'], cb =>
 // Run PageSpeed Insights
 gulp.task('pagespeed', cb =>
   // Update the below URL to the public URL of your site
-  pagespeed('f2p.com.br/bbb', {
+  pagespeed('f2p.com.br/pwribbble', {
     strategy: 'mobile'
     // By default we use the PageSpeed Insights free (no API key) tier.
     // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE

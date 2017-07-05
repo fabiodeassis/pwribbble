@@ -1,17 +1,15 @@
 (function() {
-  var deps = [MainServices];
+  var deps = ['$rootScope', MainServices];
 
   angular.module('dribbble')
     .factory('MainServices', deps);
 
   /**
    * Serviços da Api do Dribbble
-   * @param {angular.http} $http Contém os methodos de acessos as funções de chamadas XmlHttpRequest
+   * @param {rootScopeProvider} $rootScope Scopo principal do Angular
    * @return {MainServices} Objeto com os metodos do serviço
    */
-  function MainServices() {
-    var pageTitle;
-
+  function MainServices($rootScope) {
     this.pageTitle = {
       get: getTitle,
       set: setTitle
@@ -24,7 +22,7 @@
      * @return {*} string com o titulo
      */
     function getTitle() {
-      return pageTitle;
+      return $rootScope.pageTitle;
     }
 
     /**
@@ -32,7 +30,7 @@
      * @param {string} value Valor que será atribuido em PageTitle
      */
     function setTitle(value) {
-      pageTitle = value;
+      $rootScope.pageTitle = value;
     }
   }
 })();

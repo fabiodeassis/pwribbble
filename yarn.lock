@@ -65,6 +65,10 @@ angular-mocks@1.6.4:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.6.4.tgz#47fdf50921cf24fb489f100a8cf2ad99d0538f40"
 
+angular-sanitize@1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.6.4.tgz#60a37ea96fb0d4a322a3ccb64ee4a5cf3b154f0c"
+
 angular-touch@1.6.4:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/angular-touch/-/angular-touch-1.6.4.tgz#02750fccf77ca0ed949a6d1321263abb0f86b223"

@@ -15,15 +15,13 @@
     var ctrl = this;
     ctrl.onInit = onInit;
 
-    MainServices.pageTitle.set('Shots Populares');
-
     ctrl.onInit();
 
     /**
      * Ações da inicialização do controller
      */
     function onInit() {
-      ctrl.pageTitle = MainServices.pageTitle.get();
+      MainServices.pageTitle.set('Buscando...');
     }
   }
 })();

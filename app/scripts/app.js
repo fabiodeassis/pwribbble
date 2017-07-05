@@ -1,5 +1,6 @@
 (function() {
   var deps = [
+    'ngSanitize',
     'ui.router'
   ];
 

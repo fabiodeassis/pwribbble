@@ -2,6 +2,7 @@
   var deps = [
     '$stateParams',
     'ApiServices',
+    'MainServices',
     itemController
   ];
 
@@ -12,8 +13,9 @@
    *
    * @param {StateParamsProvider} $stateParams Objeto com os Parametros de Rota
    * @param {DribbbleApiServices} ApiServices Servicos da api do Dribbble
+   * @param {MainServices} MainServices Servicos da aplicação principal
    */
-  function itemController($stateParams, ApiServices) {
+  function itemController($stateParams, ApiServices, MainServices) {
     var ctrl = this;
     ctrl.onInit = onInit;
     ctrl.getShotReturn = getShotReturn;
@@ -35,6 +37,7 @@
      */
     function getShotReturn(result) {
       ctrl.shot = result;
+      MainServices.pageTitle.set((result && result.title) ? result.title : 'Falhou:/');
 
       if (result.user && result.user.links) {
         ctrl.links = [];

@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "angular": "1.6.4",
+    "angular-sanitize": "1.6.4",
     "angular-touch": "1.6.4",
     "angular-translate": "^2.12.1",
     "angular-translate-loader-partial": "^2.12.1",

@@ -3,6 +3,7 @@
     '$scope',
     '$stateParams',
     'ApiServices',
+    'MainServices',
     listController
   ];
 
@@ -14,8 +15,9 @@
    * @param {ScopeProvider} $scope Objeto de scopo do Angular
    * @param {StateParamsProvider} $stateParams Objeto com os Parametros de Rota
    * @param {DribbbleApiServices} ApiServices Servicos da api do Dribbble
+   * @param {MainServices} MainServices Servicos da aplicação principal
    */
-  function listController($scope, $stateParams, ApiServices) {
+  function listController($scope, $stateParams, ApiServices, MainServices) {
     var ctrl = this;
     ctrl.onInit = onInit;
     ctrl.getShots = getShots;
@@ -46,6 +48,7 @@
      */
     function getShotsReturn(result) {
       if (result) {
+        MainServices.pageTitle.set('Shots Populares!');
         ctrl.shots = result;
         if (ctrl.page >= 1) {
           ctrl.prevPage = ctrl.page - 1;
@@ -56,6 +59,7 @@
         }
       } else {
         ctrl.nextPage = null;
+        MainServices.pageTitle.set('Nada encontrado:/');
       }
     }
 
@@ -74,6 +78,7 @@
       return this.page;
     }), function(newVal, oldVal) {
       if (newVal !== oldVal) {
+        MainServices.pageTitle.set('Carregando...');
         ctrl.getShots(newVal);
       }
     });

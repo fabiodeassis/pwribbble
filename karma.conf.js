@@ -16,6 +16,7 @@ module.exports = function (config) {
 
       //mesma ordem como está no index.html
       './node_modules/angular/angular.js',
+      './node_modules/angular-sanitize/angular-sanitize.js',
       './node_modules/angular-mocks/angular-mocks.js',
       './node_modules/angular-ui-router/release/angular-ui-router.js',
       './app/scripts/app.js',
