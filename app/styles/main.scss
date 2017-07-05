@@ -17,22 +17,6 @@ header {
     @include flex-container;
     position: relative;
   }
-  picture {
-    width: 30%;
-  }
-  img {
-    @include border-radius(50%);
-    border: 3px solid $neutral;
-    float: left;
-    width: 100%;
-  }
-  cite {
-    float: left;
-    font-size: 3rem;
-    @include hyphenate;
-    margin-left: 4vw;
-    width: 53%;
-  }
 }
 
 label {

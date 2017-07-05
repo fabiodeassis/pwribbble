@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "name": "Pwribbble!",
-  "launch_path": "/pwribbble!/index.html",
+  "launch_path": "/pwribbble/index.html",
   "description": "Uma amostra usando a Api v1 do Dribbble.",
   "icons": {
     "128": "/images/touch/icon-128x128.png"

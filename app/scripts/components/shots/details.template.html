@@ -1,0 +1,33 @@
+<div class="media">
+  <h1>{{$ctrl.shot.title}}</h1>
+  <picture>
+    <source ng-srcset="{{$ctrl.shot.images.hidpi}}" media="(min-width: 640px)">
+    <source ng-srcset="{{$ctrl.shot.images.normal}}" media="(min-width: 320px) and (max-width: 639px)">
+    <img ng-srcset="{{$ctrl.shot.images.teaser}}" alt="{{$ctrl.shot.title}}"
+         style="max-width: 100%; margin: 0 auto; display: block;">
+  </picture>
+  <p ng-bind-html="$ctrl.shot.description"></p>
+  <br>
+  <br>
+  Criado: {{$ctrl.shot.created_at | date:'short'}}<br>
+  Atualizado: {{$ctrl.shot.updated_at | date:'short'}}<br>
+  Views: {{$ctrl.shot.views_count}}<br>
+  Likes: {{$ctrl.shot.likes_count}}<br>
+  Comments: {{$ctrl.shot.comments_count}}<br>
+</div>
+
+
+<div class="user">
+  <picture>
+    <img ng-srcset="{{$ctrl.shot.user.avatar_url}}" alt="{{$ctrl.shot.user.name}}">
+  </picture><br>
+  <h2>{{$ctrl.shot.user.name}}</h2>
+  <p ng-bind-html="$ctrl.shot.user.bio"></p>
+  <p>{{$ctrl.shot.user.location}}</p>
+  <dl>
+    <dt>Links</dt>
+    <dd ng-repeat="link in $ctrl.links">{{link.name}}: <a ng-href="{{link.url}}">{{link.url}}</a></dd>
+  </dl>
+  Membro desde: {{$ctrl.shot.user.created_at | date:'short'}}<br>
+  Atualizado: {{$ctrl.shot.user.updated_at | date:'short'}}<br>
+</div>

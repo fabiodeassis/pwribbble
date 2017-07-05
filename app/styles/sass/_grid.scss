@@ -1,0 +1,135 @@
+/**
+ * TODO Converter o Less Grid para Sass, Importar o Bootstrap Grid ou usar http://gridle.org/
+
+.generate-col-complement (@p,@i) when (@i = @cols-count) {
+  .col-@{p} {
+  &-block {
+    clear: both;
+    float: none;
+    padding-right: @grid-gutter;
+  }
+  &-right {
+    float: right;
+  }
+  &-hidden {
+    display: none;
+  }
+  &-fixed {
+    position: fixed;
+  }
+  &-height-auto {
+    height: auto!important;
+  }
+}
+}
+/* Gerador de colunas * /
+.generate-columns(@p, @n, @i: 1) when (@i =< @n) {
+  .col-@{p}-@{i} {
+  float: left;
+  padding-right: @grid-gutter;
+  width: (@i * 100% / @n);
+}
+  .generate-col-complement (@p,@i);
+  .generate-columns(@p, @n, (@i + 1));
+}
+
+.generate-offsets(@p, @n, @i: 0) when (@i < @n) {
+  .col-@{p}-offset-@{i} {
+  margin-left: (100% / @n * @i);
+}
+  .generate-offsets(@p, @n, (@i + 1));
+}
+
+.row {
+  margin: 0 -(@grid-gutter);
+  padding-left: @grid-gutter;
+  .clearfix;
+}
+
+@media (max-width: @xs-bp) {
+  // .row {
+  //   margin: 0;
+  //   padding: 0 @grid-gutter;
+  // }
+}
+/* Colunas * /
+@media (max-width: (@sm-bp - 1)) {
+  .generate-columns(xs,@cols-count);
+  .generate-offsets(xs,@cols-count);
+}
+@media (min-width: @sm-bp) and (max-width: (@md-bp - 1)) {
+  .generate-columns(sm,@cols-count);
+  .generate-offsets(sm,@cols-count);
+}
+@media (min-width: @md-bp) and (max-width: (@lg-bp - 1)) {
+  .generate-columns(md,@cols-count);
+  .generate-offsets(md,@cols-count);
+}
+@media (min-width: @lg-bp) {
+  .generate-columns(lg,@cols-count);
+  .generate-offsets(lg,@cols-count);
+}
+
+/* Offsets * /
+.container {
+  margin: 0 auto;
+  max-width: @vp-max-w;
+  min-width: @vp-min-w;
+  padding: 0 @grid-gutter
+}
+
+@media (max-width: @lg-bp + @grid-gutter) {
+  .container {
+    margin: 0 @grid-gutter;
+  }
+}
+.grid {
+  &-bottom {
+    padding-bottom: @grid-gutter;
+  }
+  &-left {
+    padding-left: @grid-gutter;
+  }
+  &-right {
+    padding-right: @grid-gutter;
+  }
+  &-top {
+    padding-top: @grid-gutter;
+  }
+  &-negative {
+    &-bottom {
+      margin-bottom: -@grid-gutter;
+    }
+    &-left {
+      margin-left: -@grid-gutter;
+    }
+    &-right {
+      margin-right: -@grid-gutter;
+    }
+    &-top {
+      margin-top: -@grid-gutter;
+    }
+  }
+}
+.col {
+  &-block {
+    clear: both;
+    float: none;
+  }
+  &-right {
+    float: right;
+  }
+}
+
+.table {
+  display: table;
+  width: 100%;
+}
+.table-row {
+  display: table-row;
+}
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+*/
