@@ -1,5 +1,9 @@
 @import "sass/main";
 
+* {
+  box-sizing: border-box;
+}
+
 .page-container {
   margin: 0 auto;
   max-width: 1024px;
@@ -9,13 +13,23 @@ section {
   padding: 4vw;
 }
 
+.page-content {
+  @include calc( padding-top, '12vw + 4.6rem');
+}
+
 header {
   @include clearfix;
   display: -webkit-flex;
   padding: 4vw;
+  position: fixed;
+  width:100%;
   .page-container {
     @include flex-container;
     position: relative;
+    a {
+      position: fixed;
+      left: 4vw;
+    }
   }
 }
 
@@ -32,4 +46,16 @@ label {
 .neutral {
   background-color: $bg;
   color: $dark;
+}
+
+.media {
+  img {
+    border: 8px solid $neutral {
+      left-color: lighten($neutral, 20%);
+      top-color: lighten($neutral, 20%);
+    }
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
 }

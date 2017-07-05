@@ -1,7 +1,7 @@
 <div class="media">
   <h1>{{$ctrl.shot.title}}</h1>
   <picture>
-    <source ng-srcset="{{$ctrl.shot.images.hidpi}}" media="(min-width: 640px)">
+    <source ng-srcset="{{$ctrl.shot.images.hidpi || $ctrl.shot.images.normal}}" media="(min-width: 640px)">
     <source ng-srcset="{{$ctrl.shot.images.normal}}" media="(min-width: 320px) and (max-width: 639px)">
     <img ng-srcset="{{$ctrl.shot.images.teaser}}" alt="{{$ctrl.shot.title}}"
          style="max-width: 100%; margin: 0 auto; display: block;">

@@ -1,11 +1,16 @@
 <div class="item">
-  <picture>
-    <!--<source ng-srcset="{{$ctrl.shot.images.hidpi}}" media="(max-width: 768px)">-->
-    <!--<source ng-srcset="{{$ctrl.shot.images.normal}}" media="(min-width: 768px) and (max-width: 480px)">-->
-    <source ng-srcset="{{$ctrl.shot.images.normal}}" media="(min-width: 480px)">
-    <img ng-srcset="{{$ctrl.shot.images.teaser}}" alt="{{$ctrl.shot.title}}">
-  </picture>
-  Views: {{$ctrl.shot.views_count}} - Likes: {{$ctrl.shot.likes_count}} - Comments: {{$ctrl.shot.comments_count}}
-  <a href ui-sref="shot({id: $ctrl.shot.id})">Details</a>
+  <div class="media">
+    <a href ui-sref="shot({id: $ctrl.shot.id})">
+      <picture>
+        <!--<source ng-srcset="{{$ctrl.shot.images.hidpi}}" media="(max-width: 768px)">-->
+        <!--<source ng-srcset="{{$ctrl.shot.images.normal}}" media="(min-width: 768px) and (max-width: 480px)">-->
+        <source ng-srcset="{{$ctrl.shot.images.normal}}" media="(min-width: 480px)">
+        <img ng-srcset="{{$ctrl.shot.images.teaser}}" alt="{{$ctrl.shot.title}}">
+      </picture>
+    </a>
+  </div>
+  <p>
+    Views: {{$ctrl.shot.views_count}} - Likes: {{$ctrl.shot.likes_count}} - Comments: {{$ctrl.shot.comments_count}}
+  </p>
   <!--<pre>{{$ctrl.shot|json}}</pre>-->
 </div>
