@@ -12,7 +12,7 @@
    */
   function DribbbleApiServices($http, MessageServices) {
     const dribbbleApiUrl = 'https://api.dribbble.com/v1';
-    let service = this;
+    var service = this;
     /**
      * Fns para manipulação de Shots
      * @type {{get: getShots}}
