@@ -1,82 +1,22 @@
-<div>
-  <div ng-repeat="shot in ListCtrl.shots">
+<div class="list">
+  <div class="item" ng-repeat="shot in ListCtrl.shots">
     <pwbbb-shot-resume data-shot="shot"></pwbbb-shot-resume>
   </div>
 </div>
-<a href ng-click="ListCtrl.setPage(-1)" ng-if="ListCtrl.prevPage" ui-sref="shots.page({page: ListCtrl.prevPage})">Anterior</a> |
-<a href ng-click="ListCtrl.setPage(1)" ng-if="ListCtrl.nextPage" ui-sref="shots.page({page: ListCtrl.nextPage})">Próxima</a>
 
-
-<!--
-{
-  "id": 3620559,
-  "title": "Twist",
-  "description": null,
-  "width": 400,
-  "height": 300,
-  "images": {
-    "hidpi": "https://cdn.dribbble.com/users/24078/screenshots/3620559/twist-01.jpg",
-    "normal": "https://cdn.dribbble.com/users/24078/screenshots/3620559/twist-01_1x.jpg",
-    "teaser": "https://cdn.dribbble.com/users/24078/screenshots/3620559/twist-01_teaser.jpg"
-  },
-  "views_count": 3079,
-  "likes_count": 336,
-  "comments_count": 6,
-  "attachments_count": 0,
-  "rebounds_count": 1,
-  "buckets_count": 10,
-  "created_at": "2017-07-01T13:34:19Z",
-  "updated_at": "2017-07-01T13:34:30Z",
-  "html_url": "https://dribbble.com/shots/3620559-Twist",
-  "attachments_url": "https://api.dribbble.com/v1/shots/3620559/attachments",
-  "buckets_url": "https://api.dribbble.com/v1/shots/3620559/buckets",
-  "comments_url": "https://api.dribbble.com/v1/shots/3620559/comments",
-  "likes_url": "https://api.dribbble.com/v1/shots/3620559/likes",
-  "projects_url": "https://api.dribbble.com/v1/shots/3620559/projects",
-  "rebounds_url": "https://api.dribbble.com/v1/shots/3620559/rebounds",
-  "animated": false,
-  "tags": [
-    "identity",
-    "logo",
-    "logotype",
-    "mark",
-    "symbol"
-  ],
-  "user": {
-    "id": 24078,
-    "name": "George Bokhua",
-    "username": "george-bokhua",
-    "html_url": "https://dribbble.com/george-bokhua",
-    "avatar_url": "https://cdn.dribbble.com/users/24078/avatars/normal/b995a47ef10412a6054d3133b0f009a8.jpg?1481552676",
-    "bio": "Check out my basic logo gridding course on Skillshare: <a href=\"http://skl.sh/georgeb2\" rel=\"nofollow noreferrer\">skl.sh/georgeb2</a>",
-    "location": "New York",
-    "links": {
-      "web": "http://skl.sh/georgeb2",
-      "twitter": "https://twitter.com/GeorgeBokhua"
-    },
-    "buckets_count": 9,
-    "comments_received_count": 6122,
-    "followers_count": 35884,
-    "followings_count": 23,
-    "likes_count": 2468,
-    "likes_received_count": 169843,
-    "projects_count": 0,
-    "rebounds_received_count": 93,
-    "shots_count": 458,
-    "teams_count": 0,
-    "can_upload_shot": true,
-    "type": "Player",
-    "pro": true,
-    "buckets_url": "https://api.dribbble.com/v1/users/24078/buckets",
-    "followers_url": "https://api.dribbble.com/v1/users/24078/followers",
-    "following_url": "https://api.dribbble.com/v1/users/24078/following",
-    "likes_url": "https://api.dribbble.com/v1/users/24078/likes",
-    "projects_url": "https://api.dribbble.com/v1/users/24078/projects",
-    "shots_url": "https://api.dribbble.com/v1/users/24078/shots",
-    "teams_url": "https://api.dribbble.com/v1/users/24078/teams",
-    "created_at": "2011-03-17T20:59:13Z",
-    "updated_at": "2017-07-03T01:49:27Z"
-  },
-  "team": null
-}
--->
+<div class="pagination">
+  <a href class="prev"
+     ng-click="ListCtrl.setPage(-1)"
+     ng-class="{ 'active': ListCtrl.prevPage }"
+     ng-disabled="!ListCtrl.prevPage"
+     ui-sref="shots.page({page: ((ListCtrl.prevPage === 0) ? 1 : ListCtrl.prevPage)})">
+    Anterior
+  </a>
+  <a href class="next"
+     ng-click="ListCtrl.setPage(1)"
+     ng-class="{ 'active': ListCtrl.nextPage }"
+     ng-disabled="!ListCtrl.nextPage"
+     ui-sref="shots.page({page: ((ListCtrl.nextPage === 0) ? 1 : ListCtrl.nextPage)})">
+    Próxima
+  </a>
+</div>

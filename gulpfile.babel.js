@@ -153,6 +153,13 @@ gulp.task('scripts', () =>
     .pipe(gulp.dest('.tmp/scripts'))
 );
 
+gulp.task('fonts', function() {
+  return gulp.src([
+    './app/styles/font/**/*'])
+    .pipe(gulp.dest('dist/styles/font'))
+    .pipe(gulp.dest('.tmp/styles/font'));
+});
+
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
   return gulp.src('app/**/*.html')
@@ -188,7 +195,7 @@ gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 // });
 
 // Watch files for changes & reload
-gulp.task('serve', ['scripts', 'styles'], () => {
+gulp.task('serve', ['scripts', 'styles', 'fonts'], () => {
   browserSync({
     notify: false,
     // Customize the Browsersync console logging prefix
@@ -231,7 +238,7 @@ gulp.task('serve:dist', ['default'], () =>
 gulp.task('default', ['clean'], cb =>
   runSequence(
     'styles',
-    ['lint', 'html', 'scripts', 'images', 'copy'],
+    ['lint', 'html', 'scripts', 'images', 'copy', 'fonts'],
     'generate-service-worker',
     cb
   )
@@ -276,6 +283,7 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
       `${rootDir}/images/**/*`,
       `${rootDir}/scripts/**/*.js`,
       `${rootDir}/styles/**/*.css`,
+      `${rootDir}/styles/font/*`,
       `${rootDir}/*.{html,json}`
     ],
     // Translates a static file path to the relative URL that it's served from.

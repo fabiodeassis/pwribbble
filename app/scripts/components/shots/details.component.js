@@ -16,6 +16,17 @@
    */
   function shotDetailsController() {
     var ctrl = this;
+
+    ctrl.getLinks = function() {
+      if (ctrl.shot.user && ctrl.shot.user.links) {
+        ctrl.links = [];
+        for (var key in ctrl.shot.user.links) {
+          if (ctrl.shot.user.links[key] !== '') {
+            ctrl.links.push({name: key, url: ctrl.shot.user.links[key]});
+          }
+        }
+      }
+    };
   }
   shotDetailsController.$inject = [];
 

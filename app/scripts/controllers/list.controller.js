@@ -25,6 +25,8 @@
     ctrl.setPage = setPage;
     ctrl.page = ($stateParams.page) ? parseInt($stateParams.page, 10) : 1;
 
+    ctrl.shots = [{},{},{},{},{}];
+
     ctrl.onInit();
 
     /**
@@ -39,6 +41,10 @@
      * @param {number} page Pagina a ser requerida
      */
     function getShots(page) {
+      if (page <= 0) {
+        return;
+      }
+      ctrl.shots = [{},{},{},{},{}];
       ApiServices.shots.get(page).then(ctrl.getShotsReturn);
     }
 
@@ -52,7 +58,7 @@
         ctrl.shots = result;
         if (ctrl.page >= 1) {
           ctrl.prevPage = ctrl.page - 1;
-          if (result.length === 10) {
+          if (result.length === ApiServices.shots.perPage) {
             // TODO Retornar se existe link no Cabeçalho da requisição
             ctrl.nextPage = ctrl.page + 1;
           }
@@ -69,6 +75,10 @@
      */
     function setPage(number) {
       ctrl.page += (number);
+
+      if (ctrl.page <= 0) {
+        ctrl.page = 1;
+      }
     }
 
     /**

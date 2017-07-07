@@ -1,16 +1,22 @@
-<div class="item">
+<div class="wrapper" ng-if="!$ctrl.shot.id">
+  <span class="title"></span>
+  <span class="media"></span>
+</div>
+
+<div class="resume" ng-if="$ctrl.shot.id">
+
   <div class="media">
+    <h2>{{$ctrl.shot.title}}</h2>
     <a href ui-sref="shot({id: $ctrl.shot.id})">
       <picture>
-        <!--<source ng-srcset="{{$ctrl.shot.images.hidpi}}" media="(max-width: 768px)">-->
-        <!--<source ng-srcset="{{$ctrl.shot.images.normal}}" media="(min-width: 768px) and (max-width: 480px)">-->
-        <source ng-srcset="{{$ctrl.shot.images.normal}}" media="(min-width: 480px)">
-        <img ng-srcset="{{$ctrl.shot.images.teaser}}" alt="{{$ctrl.shot.title}}">
+        <source ng-srcset="{{$ctrl.shot.images.teaser}}" media="(max-width: 200px)">
+        <img ng-srcset="{{$ctrl.shot.images.normal}}" alt="{{$ctrl.shot.title}}">
       </picture>
     </a>
   </div>
-  <p>
-    Views: {{$ctrl.shot.views_count}} - Likes: {{$ctrl.shot.likes_count}} - Comments: {{$ctrl.shot.comments_count}}
+  <p class="icones">
+    <span class="icon-views"></span> {{$ctrl.shot.views_count}}
+    <span class="icon-favorites"></span> {{$ctrl.shot.likes_count}}
+    <span class="icon-comments"></span> {{$ctrl.shot.comments_count}}
   </p>
-  <!--<pre>{{$ctrl.shot|json}}</pre>-->
 </div>

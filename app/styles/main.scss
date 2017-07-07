@@ -4,9 +4,68 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none;
+}
 .page-container {
   margin: 0 auto;
-  max-width: 1024px;
+  max-width: 800px;
+}
+
+.wrapper {
+  > * {
+    display: block;
+  }
+  .title,
+  .date {
+    &:before {
+      @include border-radius(3px);
+      content: '';
+      display: inline-block;
+    }
+  }
+  .title {
+    &:before {
+      background-color: lighten($dark, 40%);
+      padding-top: 9%;
+      width: 70%;
+    }
+  }
+  .date {
+    text-align: right;
+    &:before {
+      background-color: lighten($dark, 65%);
+      height: 16px;
+      width: 20%;
+    }
+  }
+  .media {
+    background-color: $dark;
+    padding-top: 52%;
+  }
+  .description {
+    background-color: lighten($dark, 55%);
+    height: 20px;
+    margin: 40px 0;
+    position: relative;
+    &:before,
+    &:after {
+      background-color: lighten($dark, 55%);
+      @include border-radius(3px);
+      content: '';
+      height: 20px;
+      left: 0;
+      position: absolute;
+    }
+    &:after {
+      bottom: -30px;
+      width: 68%;
+    }
+    &:before {
+      top: -30px;
+      width: 100%;
+    }
+  }
 }
 
 section {
@@ -14,21 +73,26 @@ section {
 }
 
 .page-content {
-  @include calc( padding-top, '12vw + 4.6rem');
+  @include calc( padding-top, '8vw + 4.6rem');
 }
 
 header {
   @include clearfix;
   display: -webkit-flex;
-  padding: 4vw;
+  padding: 2vw;
   position: fixed;
   width:100%;
+  z-index: 9;
   .page-container {
     @include flex-container;
     position: relative;
     a {
-      position: fixed;
+      font-size: 2rem;
       left: 4vw;
+      position: fixed;
+      &:hover {
+        color: #fff;
+      }
     }
   }
 }
@@ -36,7 +100,7 @@ header {
 label {
   display: inline-block;
   padding-left: 5px;
-  margin-left: 0 5px;
+  margin-left: 5px;
 }
 
 .dark {
@@ -49,13 +113,190 @@ label {
 }
 
 .media {
+  picture {
+    display: block;
+    padding-top: 76%;
+    position: relative;
+  }
   img {
-    border: 8px solid $neutral {
+    background-color: $dark;
+    border: 5px solid $neutral {
       left-color: lighten($neutral, 20%);
       top-color: lighten($neutral, 20%);
     }
     display: block;
+    min-height: 99%;
     margin: 0 auto;
-    max-width: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+}
+
+.icones {
+  color: $neutral;
+  font-size: 1.3rem;
+  line-height: 3em;
+  text-align: right;
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    color: $dark;
+    font-size: 1.2em;
+    margin: 0 0 0 .5em;
+    vertical-align: middle;
+  }
+}
+
+.list {
+  @include clearfix;
+  margin: 0 -10px;
+  .item {
+    padding: 0 10px 20px;
+  }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  .list {
+    .item {
+      float: left;
+      width: 50%;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .list {
+    .item {
+      float: left;
+      width: 33.333%;
+    }
+  }
+}
+
+.resume {
+  h2 {
+    height: 5rem;
+    overflow: hidden;
+    padding-left: 3px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.details {
+  .date {
+    color: #999;
+    display: block;
+    font-size: 1.8rem;
+    padding-bottom: .5em;
+    text-align: right;
+  }
+  picture {
+    img {
+      width: 100%;
+    }
+  }
+  .icones {
+    font-size: 1.6rem;
+    line-height: 2em;
+  }
+}
+
+.user {
+  @include clearfix;
+  padding: 2vw 0;
+  &-container {
+    position: relative;
+    .thumb,
+    .text {
+      float: left;
+    }
+    .thumb {
+      max-width: 25%;
+      padding-top: 1rem;
+      img {
+        max-width: 100%;
+      }
+      .icons {
+        display: block;
+        font-size: 1.3rem;
+        line-height: 1.5em;
+        text-align: left;
+        span {
+          color: $neutral;
+          display: block;
+          &[class^="icon-"],
+          &[class*=" icon-"] {
+            &:before {
+              color: $dark;
+              font-size: 1.2rem;
+              margin: 0;
+              vertical-align: middle;
+            }
+          }
+          &.icon-following {
+            &:after {
+              content: ' (seguindo)';
+            }
+          }
+          &.icon-followers {
+            &:after {
+              content: ' (seguidores)';
+            }
+          }
+        }
+      }
+    }
+    .text {
+      max-width: 75%;
+      padding-left: 4vw;
+      ul {
+        list-style: none;
+        li {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .user {
+    .thumb {
+      .icons {
+        span {
+          display: inline-block;
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+    .text {
+      h4 {
+        font-size: 3.6rem;
+      }
+    }
+  }
+}
+
+.pagination {
+  text-align: center;
+  @include clearfix;
+  a {
+    background: lighten($dark, 80%);
+    color: #fff;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    &.active {
+      background-color: $dark;
+      &:hover {
+        background-color: $neutral;
+      }
+    }
   }
 }

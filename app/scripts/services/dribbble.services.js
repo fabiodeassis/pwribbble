@@ -12,27 +12,28 @@
    */
   function DribbbleApiServices($http, MessageServices) {
     const dribbbleApiUrl = 'https://api.dribbble.com/v1';
-
+    let service = this;
     /**
      * Fns para manipulação de Shots
      * @type {{get: getShots}}
      */
-    this.shots = {
-      get: getShots
+    service.shots = {
+      get: getShots,
+      perPage: 18
     };
 
     /**
      * Fns para Manipulação de um shot específico
      * @type {{get: getShot}}
      */
-    this.shot = {
+    service.shot = {
       get: getShot
     };
 
     /**
      * retorno do serviço
      */
-    return this;
+    return service;
 
     /**
      * Retorna os shots mais populares
@@ -43,7 +44,7 @@
       return $http({
         method: 'GET',
         url: dribbbleApiUrl + '/shots',
-        params: {per_page: 10, page: page || 1}
+        params: {per_page: service.shots.perPage, page: page || 1}
       })
       .then(
         MessageServices.return.data,

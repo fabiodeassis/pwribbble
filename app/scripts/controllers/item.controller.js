@@ -38,15 +38,6 @@
     function getShotReturn(result) {
       ctrl.shot = result;
       MainServices.pageTitle.set((result && result.title) ? result.title : 'Falhou:/');
-
-      if (result.user && result.user.links) {
-        ctrl.links = [];
-        for (var key in result.user.links) {
-          if (result.user.links[key] !== '') {
-            ctrl.links.push({name: key, url: result.user.links[key]});
-          }
-        }
-      }
     }
   }
 })();
